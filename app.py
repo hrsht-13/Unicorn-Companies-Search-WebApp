@@ -139,7 +139,6 @@ if (rad=="desc"):
 st.header("Investors")
 st.write("See the Investors of the above mentioned companies.")
 com=st.multiselect("Select Company(s)",dcx["Company name"])
-st.write(com)
 if(len(com)>0):
   inv=dinv.loc[dinv["Company name"].isin(com)][["Company name","Investors"]]
   inv.reset_index(drop=True, inplace=True)
