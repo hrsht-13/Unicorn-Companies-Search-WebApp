@@ -139,7 +139,7 @@ st.header("Investors")
 st.write("See the Investors of the above mentioned companies.")
 com=st.multiselect("Select Company(s)",dcx["Company name"])
 if(len(com)>0):
-  inv=df_city[df_city["Company name"].isin(com)][["Company name","Investors"]]
+  inv=dcx[dcx["Company name"].isin(com)][["Company name","Investors"]]
   inv.reset_index(drop=True, inplace=True)
   st.table(inv)
 
