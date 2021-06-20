@@ -115,7 +115,7 @@ st.plotly_chart(fig,use_container_width=True)
 
 st.header("Company Details")
 st.write("Details of the Unicorn Companies in "+country+" in the selected time period.")
-dcx=df_city[["Company name","Valuation (in $B)","Industry","Investors"]]
+dcx=df_city[["Company name","Valuation (in $B)","Industry"]]
 dcx.reset_index(drop=True, inplace=True)
 dinv=dcx.copy()
 l,r=st.beta_columns(2)
