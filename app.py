@@ -137,10 +137,10 @@ if (rad=="desc"):
 
 st.header("Investors")
 st.write("See the Investors of the above mentioned companies.")
-# people=st.selectbox("Select Company(s)",dcx["Company name"])
-# if(len(people)>0):
-#   for i in range(len(com)):
-inv=df_city[["Company name","Investors"]]
+people=st.selectbox("Select Company(s)",df_city["Company name"])
+if(len(people)>0):
+  for i in range(len(com)):
+    inv=df_city[df["Company name"]==people[i]]
 # inv=df_city[df_city["Company name"]==people]
 inv.reset_index(drop=True, inplace=True)
 st.table(inv)
