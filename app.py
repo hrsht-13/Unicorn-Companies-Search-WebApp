@@ -139,10 +139,9 @@ if (rad=="desc"):
 st.header("Investors")
 st.write("See the Investors of the above mentioned companies.")
 com=st.multiselect("Select Company(s)",dcx["Company name"])
-inv=pd.DataFrame()
 if(len(com)>0):
   for i in range(len(com)):
-    inv=pd.concat(inv,df_city[df_city["Company name"]==com[i]],axis=0)
+    inv=df_city[df_city["Company name"]==com[i]]
   inv.reset_index(drop=True, inplace=True)
   st.table(inv)
 
