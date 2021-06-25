@@ -135,15 +135,15 @@ if (rad=="desc"):
   else:
     st.table(dcx)
 
-st.header("Investors")
-st.write("See the Investors of the above mentioned companies.")
-people=st.selectbox("Select Company(s)",df_city["Company name"])
-# if(len(people)>0):
-#   for i in range(len(people)):
-inv=df_city[df_city["Company name"]==people]
+# st.header("Investors")
+# st.write("See the Investors of the above mentioned companies.")
+# people=st.selectbox("Select Company(s)",df_city["Company name"])
+# # if(len(people)>0):
+# #   for i in range(len(people)):
 # inv=df_city[df_city["Company name"]==people]
-# inv.reset_index(drop=True, inplace=True)
-st.table(inv)
+# # inv=df_city[df_city["Company name"]==people]
+# # inv.reset_index(drop=True, inplace=True)
+# st.table(inv)
 
 st.header("SUMMARY")
 st.subheader("Select the name of the company to know its details.")
