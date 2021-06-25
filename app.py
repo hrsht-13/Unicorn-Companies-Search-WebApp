@@ -139,8 +139,10 @@ if (rad=="desc"):
 st.header("Investors")
 st.write("See the Investors of the above mentioned companies.")
 com=st.multiselect("Select Company(s)",dcx["Company name"])
+inv=pd.DataFrame()
 if(len(com)>0):
-  inv=df_city.loc[df_city["Company name"].isin(com)][["Company name","Investors"]]
+  for i in range(len(com)):
+    inv.append(df_city[df_city["Company name"]==com[i]]])
   inv.reset_index(drop=True, inplace=True)
   st.table(inv)
 
