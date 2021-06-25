@@ -117,7 +117,6 @@ st.header("Company Details")
 st.write("Details of the Unicorn Companies in "+country+" in the selected time period.")
 dcx=df_city[["Company name","Valuation (in $B)","Industry"]]
 dcx.reset_index(drop=True, inplace=True)
-dinv=dcx.copy()
 l,r=st.beta_columns(2)
 drop=r.multiselect("Select Industry(s)",dcx["Industry"].unique())
 rad=l.radio("Sort by Valuation (Ascending/Descending)",["asce","desc"])
@@ -138,10 +137,11 @@ if (rad=="desc"):
 
 st.header("Investors")
 st.write("See the Investors of the above mentioned companies.")
-people=st.selectbox("Select Company(s)",dcx["Company name"])
+# people=st.selectbox("Select Company(s)",dcx["Company name"])
 # if(len(people)>0):
 #   for i in range(len(com)):
-inv=df_city[df_city["Company name"]==people]
+inv=df_city[["Company name","Investors]]
+# inv=df_city[df_city["Company name"]==people]
 inv.reset_index(drop=True, inplace=True)
 st.table(inv)
 
