@@ -4,15 +4,27 @@ from pandas.core.common import SettingWithCopyWarning
 warnings.simplefilter(action="ignore", category=SettingWithCopyWarning)
 import pandas as pd
 from datetime import date, datetime, timedelta
-from selenium import webdriver
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 import time as t
 
+from selenium import webdriver
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+
 def scrape():
-    path="geckodriver"
-    browser=webdriver.Firefox(executable_path=path)
 
     template="https://www.cbinsights.com/research-unicorn-companies"
+    XPATH = "//*[@class='ui-mainview-block eventpath-wrapper']"
+    TIMEOUT = 20
+
+    firefoxOptions = Options()
+    firefoxOptions.add_argument("--headless")
+    browser = webdriver.Firefox(
+        options=firefoxOptions,
+        executable_path="/home/appuser/.conda/bin/geckodriver",
+    )
     browser.get(template)
     t.sleep(2)
     num_rows=browser.execute_script("return document.getElementsByTagName('tr').length")
