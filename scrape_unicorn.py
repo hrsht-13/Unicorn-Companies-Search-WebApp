@@ -7,6 +7,7 @@ from datetime import date, datetime, timedelta
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 import time as t
+from os import path
 
 def scrape():
     path=r"geckodriver.exe"
