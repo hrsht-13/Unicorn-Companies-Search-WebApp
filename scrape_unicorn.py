@@ -9,7 +9,7 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 import time as t
 
 def scrape():
-    path="geckodriver.exe"
+    path="geckodriver"
     browser=webdriver.Firefox(executable_path=path)
 
     template="https://www.cbinsights.com/research-unicorn-companies"
