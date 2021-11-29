@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
-from scrape_unicorn.py import *
+from scrape_unicorn import *
 
 import warnings
 warnings.filterwarnings("ignore")
