@@ -39,7 +39,7 @@ def location():
   #for cities
   lon = {}
   lat = {}
-  for i in tqdm(df["City"].unique()):
+  for i in (df["City"].unique()):
       
     if findGeocode(i) != None:
            
@@ -61,7 +61,7 @@ def location():
   #for countries
   longitude = {}
   latitude = {}
-  for i in tqdm(df["Country of origin"].unique()):
+  for i in (df["Country of origin"].unique()):
       
     if findGeocode(i) != None:
            
