@@ -13,7 +13,12 @@ st.title("Unicorn Companies across the Globe.")
 st.warning("A unicorn company, or unicorn startup, is a private company with a valuation over $1 billion. As of June 2021, there are more than 700 unicorns around the world. Popular former unicorns include Airbnb, Facebook and Google. Variants include a decacorn, valued at over $10 billion, and a hectocorn, valued at over $100 billion.")
 
 #Dataset
-df=pd.read_csv("700_unicorn.csv")
+url="https://www.cbinsights.com/research-unicorn-companies"
+df=pd.read_html(url)[0]
+df["Date Joined"]=pd.to_datetime(df["Date Joined"],infer_datetime_format=True)
+df["Date Joined"]=df["Date Joined"].dt.strftime("%d-%m-%Y")
+df["Valuation ($B)"] = df["Valuation ($B)"].apply(lambda x : x.replace("$","")) 
+df["Valuation ($B)"] = df["Valuation ($B)"].astype("float")
 df["Date Joined"]=pd.DatetimeIndex(df["Date Joined"])
 
 #globe
