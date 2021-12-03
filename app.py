@@ -20,6 +20,7 @@ df["Date Joined"]=df["Date Joined"].dt.strftime("%d-%m-%Y")
 df["Valuation ($B)"] = df["Valuation ($B)"].apply(lambda x : x.replace("$","")) 
 df["Valuation ($B)"] = df["Valuation ($B)"].astype("float")
 df["Date Joined"]=pd.DatetimeIndex(df["Date Joined"])
+st.write(df.shape)
 
 #globe
 st.header("Countries with Unicorn Companies")
