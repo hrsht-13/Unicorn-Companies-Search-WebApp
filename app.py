@@ -110,7 +110,7 @@ else:
 
 df=pd.read_csv("Unicorn.csv")
 st.write("file saveddd")
-st.write(df["Date Joined"].dt.year.unique())
+st.write(df["Date Joined"])
 #globe
 st.header("Countries with Unicorn Companies")
 dfx=df[['latitude', 'longitude']]
