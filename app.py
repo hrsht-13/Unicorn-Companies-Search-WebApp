@@ -89,7 +89,7 @@ st.warning("A unicorn company, or unicorn startup, is a private company with a v
 
 #Dataset
 get_data()
-dt=pd.read_csv("unicorn.csv")
+df=pd.read_csv("unicorn.csv")
 # df=pd.read_csv("700_unicorn.csv")
 df["Date Joined"]=pd.DatetimeIndex(df["Date Joined"])
 longitude,latitude,lat,lon=location()
