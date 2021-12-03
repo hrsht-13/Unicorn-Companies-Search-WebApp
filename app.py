@@ -41,10 +41,12 @@ def findGeocode(city):
       
 def location():
   x=0
+  y=0
   progress=st.sidebar.progress(0)
   #for cities
   lon = {}
   lat = {}
+  
   for i in (df["City"].unique()):
     time.sleep(0.1)
     progress.progress(x+1)
@@ -66,13 +68,16 @@ def location():
         lat[i]=np.nan
         lon[i]=np.nan
     x=x+1
+    
+    
   #for countries
   longitude = {}
   latitude = {}
-  
+  progress=st.sidebar.progress(0)
   
   for i in tqdm(df["Country of origin"].unique()):
-      
+    time.sleep(0.1)
+    progress.progress(y+1)
     if findGeocode(i) != None:
            
         loc = findGeocode(i)
@@ -90,6 +95,9 @@ def location():
         latitude[i]=np.nan
         longitude[i]=np.nan
         
+    y=y+1
+  
+  st.balloons()
   return longitude, latitude , lat, lon
 
 st.set_page_config(layout="wide")
@@ -100,7 +108,7 @@ st.success("A unicorn company, or unicorn startup, is a private company with a v
 #sidebar
 result= st.sidebar.button("To search with the latest data, click here!")
 if result:
-  st.sidebar.warning("Please wait, new data is been extracted...")
+  st.sidebar.warning("Please wait,data is been extracted..")
   
 #Dataset
 Today = datetime.now()-timedelta(hours=12, minutes =30)
