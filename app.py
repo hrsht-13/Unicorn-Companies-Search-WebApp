@@ -159,7 +159,7 @@ st.sidebar.subheader("Select Time-Period")
 start=pd.to_datetime(st.sidebar.date_input("From",value=pd.to_datetime("2007-07-20")))
 end=pd.to_datetime(st.sidebar.date_input("To",value=pd.to_datetime(df["Date Joined"]).max()))
 st.sidebar.write('**NOTE**: Date refers when the company became a Unicorn.')
-result= st.sidebar.info.button("To search with the latest data, click here!")
+result= st.sidebar.button("To search with the latest data, click here!")
 st.sidebar.info("The data keeps on updating after every month.")
 
 #country map
