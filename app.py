@@ -39,10 +39,14 @@ def findGeocode(city):
       
       
 def location():
+  i=0
   #for cities
   lon = {}
   lat = {}
-  for i in tqdm(df["City"].unique()):
+  for i in (df["City"].unique()):
+    progress=st.progress(0)
+    time.sleep(0.1)
+    progress.progress(i+1)
       
     if findGeocode(i) != None:
            
@@ -64,6 +68,8 @@ def location():
   #for countries
   longitude = {}
   latitude = {}
+  i=i+1
+  
   for i in tqdm(df["Country of origin"].unique()):
       
     if findGeocode(i) != None:
@@ -96,7 +102,6 @@ if result:
   st.sidebar.warning("Please wait, new data is been extracted...")
   
 #Dataset
-st.write(result)
 Today = datetime.now()-timedelta(hours=12, minutes =30)
 From_Date = (Today.strftime("%d"))
 if(From_Date=='31' or result):
