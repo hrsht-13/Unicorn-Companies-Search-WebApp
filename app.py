@@ -6,6 +6,7 @@ import plotly.graph_objects as go
 from geopy.exc import GeocoderTimedOut
 from geopy.geocoders import Nominatim
 from tqdm import tqdm
+from datetime import date, datetime, timedelta
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -90,15 +91,20 @@ st.title("Unicorn Companies across the Globe.")
 st.warning("A unicorn company, or unicorn startup, is a private company with a valuation over $1 billion. As of June 2021, there are more than 700 unicorns around the world. Popular former unicorns include Airbnb, Facebook and Google. Variants include a decacorn, valued at over $10 billion, and a hectocorn, valued at over $100 billion.")
 
 #Dataset
-get_data()
-df=pd.read_csv("unicorn.csv")
-# df=pd.read_csv("700_unicorn.csv")
-df["Date Joined"]=pd.DatetimeIndex(df["Date Joined"])
-longitude,latitude,lat,lon=location()
-df["longitude"]=df["Country of origin"].map(longitude)
-df["latitude"]=df["Country of origin"].map(latitude)
-df["lat"]=df["City"].map(lat)
-df["lon"]=df["City"].map(lon)
+Today = datetime.now()-timedelta(hours=12, minutes =30)
+From_Date = (Today.strftime("%d"))
+if(From_Date=='31'):
+  get_data()
+  df=pd.read_csv("unicorn.csv")
+  # df=pd.read_csv("700_unicorn.csv")
+  df["Date Joined"]=pd.DatetimeIndex(df["Date Joined"])
+  longitude,latitude,lat,lon=location()
+  df["longitude"]=df["Country of origin"].map(longitude)
+  df["latitude"]=df["Country of origin"].map(latitude)
+  df["lat"]=df["City"].map(lat)
+  df["lon"]=df["City"].map(lon)
+else:
+  pass
 
 
 #globe
