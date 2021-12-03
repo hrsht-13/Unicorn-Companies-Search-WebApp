@@ -70,8 +70,6 @@ st.success("A unicorn company, or unicorn startup, is a private company with a v
 
 #sidebar
 result= st.sidebar.button("To search with the latest data, click here!")
-if result:
-  st.warning("Please wait, till the data is extracted..")
   
 #Dataset
 Today = datetime.now()-timedelta(hours=12, minutes =30)
@@ -107,6 +105,7 @@ if(result):
   df["lat"]=df["City"].map(lat)
   df["lon"]=df["City"].map(lon)
   df.to_csv("Unicorn.csv")
+  st.balloons()
 else:
   pass
 
