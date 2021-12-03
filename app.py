@@ -94,6 +94,7 @@ st.warning("A unicorn company, or unicorn startup, is a private company with a v
 Today = datetime.now()-timedelta(hours=12, minutes =30)
 From_Date = (Today.strftime("%d"))
 if(From_Date=='03'):
+  st.write("getting data")
   df=get_data()
   # df=pd.read_csv("700_unicorn.csv")
   df["Date Joined"]=pd.DatetimeIndex(df["Date Joined"])
@@ -108,6 +109,7 @@ else:
 
 
 df=pd.read_csv("Unicorn.csv")
+st.write("file saveddd")
 #globe
 st.header("Countries with Unicorn Companies")
 dfx=df[['latitude', 'longitude']]
