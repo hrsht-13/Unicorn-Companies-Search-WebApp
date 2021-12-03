@@ -16,15 +16,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 def scrape():
 
     template="https://www.cbinsights.com/research-unicorn-companies"
-    XPATH = "//*[@class='ui-mainview-block eventpath-wrapper']"
-    TIMEOUT = 20
-
-    firefoxOptions = Options()
-    firefoxOptions.add_argument("--headless")
-    browser = webdriver.Firefox(
-        options=firefoxOptions,
-        executable_path="/home/appuser/.conda/bin/geckodriver",
-    )
     browser.get(template)
     t.sleep(2)
     num_rows=browser.execute_script("return document.getElementsByTagName('tr').length")
