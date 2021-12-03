@@ -16,6 +16,7 @@ def get_data():
   df["Date Joined"]=df["Date Joined"].dt.strftime("%d-%m-%Y")
   df["Valuation ($B)"] = df["Valuation ($B)"].apply(lambda x : x.replace("$","")) 
   df["Valuation ($B)"] = df["Valuation ($B)"].astype("float")
+  df.rename(columns = {'Company':'Company name', 'Valuation ($B)':'Valuation (in $B)', 'Country':'Country of origin','Select Investors':'Investors'}, inplace = True)
   df.to_csv("unicorn.csv")
   
 def findGeocode(city):
