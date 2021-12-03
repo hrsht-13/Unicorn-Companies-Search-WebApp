@@ -76,7 +76,7 @@ if result:
 #Dataset
 Today = datetime.now()-timedelta(hours=12, minutes =30)
 From_Date = (Today.strftime("%d"))
-if(From_Date=='31' ):
+if(From_Date=='03' ):
   df=get_data()
   # df=pd.read_csv("700_unicorn.csv")
   df["Date Joined"]=pd.DatetimeIndex(df["Date Joined"])
