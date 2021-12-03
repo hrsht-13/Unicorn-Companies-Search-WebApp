@@ -40,7 +40,7 @@ def findGeocode(city):
       
       
 def location():  
-    
+  y=0  
   #for countries
   longitude = {}
   latitude = {}
@@ -67,8 +67,7 @@ def location():
         longitude[i]=np.nan
         
     y=y+1
-    
-  y=0
+  
   #for cities
   lon = {}
   lat = {}
