@@ -41,7 +41,7 @@ def findGeocode(city):
       
 def location():
   x=0
-  progress=st.progress(0)
+  progress=st.sidebar.progress(0)
   #for cities
   lon = {}
   lat = {}
