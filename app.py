@@ -46,7 +46,7 @@ def location():
   latitude = {}
   progress=st.sidebar.progress(0)
   
-  for i in (df["Country of origin"].unique()):
+  for i in tqdm(df["Country of origin"].unique()):
     time.sleep(0.1)
     progress.progress(y+1)
     if findGeocode(i) != None:
@@ -72,7 +72,7 @@ def location():
   lon = {}
   lat = {}
   
-  for i in (df["City"].unique()):
+  for i in tqdm(df["City"].unique()):
       
     if findGeocode(i) != None:
            
