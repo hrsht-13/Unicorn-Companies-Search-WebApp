@@ -117,7 +117,7 @@ st.header("Company Details")
 st.write("Details of the Unicorn Companies in "+country+" in the selected time period.")
 dcx=df_city[["Company name","Valuation (in $B)","Industry","Investors"]]
 dcx.reset_index(drop=True, inplace=True)
-l,r=st.beta_columns(2)
+l,r=st.columns(2)
 drop=r.multiselect("Select Industry(s)",dcx["Industry"].unique())
 rad=l.radio("Sort by Valuation (Ascending/Descending)",["asce","desc"])
 if (rad=="asce"):
@@ -150,7 +150,7 @@ company=st.selectbox("Company",company_list)
 detail=df[df["Company name"]==company]
 map_=detail[["latitude","longitude"]]
 map_.loc[len(map_.index)] = detail[["lat","lon"]].values[0]
-l,r=st.beta_columns((1,1.2))
+l,r=st.columns((1,1.2))
 l.subheader("Origin")
 l.map(map_,zoom=3,use_container_width=True)
 
