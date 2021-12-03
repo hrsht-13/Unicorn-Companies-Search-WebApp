@@ -6,4 +6,4 @@ plotly==5.4.0
 warn==0.1.0
 datetime
 lxml==4.6.4
-
+geopy
