@@ -96,6 +96,7 @@ if result:
   st.sidebar.warning("Please wait, new data is been extracted...")
   
 #Dataset
+st.wrtie(result)
 Today = datetime.now()-timedelta(hours=12, minutes =30)
 From_Date = (Today.strftime("%d"))
 if(From_Date=='31' or result):
