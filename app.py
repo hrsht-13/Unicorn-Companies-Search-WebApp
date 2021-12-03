@@ -45,47 +45,27 @@ def location():
   longitude = {}
   latitude = {}
   
-  for i in tqdm(df["Country of origin"].unique()):
-    
-    if findGeocode(i) != None:
-           
-        loc = findGeocode(i)
-          
-        # coordinates returned from 
-        # function is stored into
-        # two separate list
-        latitude[i]=loc.latitude
-        longitude[i]=loc.longitude
-       
-    # if coordinate for a city not
-    # found, insert "NaN" indicating 
-    # missing value 
-    else:
-        latitude[i]=np.nan
-        longitude[i]=np.nan
+  for i in tqdm(df["Country of origin"].unique()): 
+    loc = findGeocode(i)
+    latitude[i]=loc.latitude
+    longitude[i]=loc.longitude
+        
+  else:
+    latitude[i]=np.nan
+    longitude[i]=np.nan
         
   #for cities
   lon = {}
   lat = {}
   
   for i in tqdm(df["City"].unique()):
-      
-    if findGeocode(i) != None:
-           
-        loc = findGeocode(i)
-          
-        # coordinates returned from 
-        # function is stored into
-        # two separate list
-        lat[i]=loc.latitude
-        lon[i]=loc.longitude
+    loc = findGeocode(i)
+    lat[i]=loc.latitude
+    lon[i]=loc.longitude
        
-    # if coordinate for a city not
-    # found, insert "NaN" indicating 
-    # missing value 
-    else:
-        lat[i]=np.nan
-        lon[i]=np.nan
+   else:
+    lat[i]=np.nan
+    lon[i]=np.nan
   
   return longitude, latitude , lat, lon
 
