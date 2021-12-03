@@ -5,4 +5,5 @@ numpy>=1.9.2
 plotly==5.4.0
 warn==0.1.0
 datetime
+xlml==4.6.4
 
