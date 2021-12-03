@@ -76,11 +76,32 @@ if result:
 #Dataset
 Today = datetime.now()-timedelta(hours=12, minutes =30)
 From_Date = (Today.strftime("%d"))
-if(From_Date=='31' or result):
+if(From_Date=='31' ):
   df=get_data()
   # df=pd.read_csv("700_unicorn.csv")
   df["Date Joined"]=pd.DatetimeIndex(df["Date Joined"])
   longitude,latitude,lat,lon=location()
+  pd.DataFrame(longitude.items()).to_csv("country_lon.csv",index=False)
+  pd.DataFrame(latitude.items()).to_csv("country_lat.csv",index=False)
+  pd.DataFrame(lon.items()).to_csv("city_lon.csv",index=False)
+  pd.DataFrame(lat.items()).to_csv("city_lat.csv",index=False)
+  df["longitude"]=df["Country of origin"].map(longitude)
+  df["latitude"]=df["Country of origin"].map(latitude)
+  df["lat"]=df["City"].map(lat)
+  df["lon"]=df["City"].map(lon)
+  df.to_csv("Unicorn.csv",index=False)
+else:
+  pass
+
+if(result):
+  df=get_data()
+  # df=pd.read_csv("700_unicorn.csv")
+  df["Date Joined"]=pd.DatetimeIndex(df["Date Joined"])
+  longitude=pd.read_csv("country_lon.csv").set_index(0).T.to_dict("records")[0]
+  latitude=pd.read_csv("country_lat.csv").set_index(0).T.to_dict("records")[0]
+  lon=pd.read_csv("city_lon.csv").set_index(0).T.to_dict("records")[0]
+  lat=pd.read_csv("city_lat").set_index(0).T.to_dict("records")[0]
+  
   df["longitude"]=df["Country of origin"].map(longitude)
   df["latitude"]=df["Country of origin"].map(latitude)
   df["lat"]=df["City"].map(lat)
