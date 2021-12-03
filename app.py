@@ -106,7 +106,7 @@ if(From_Date=='31'):
 else:
   pass
 
-result= st.button("To search with the latest data, click here!"):
+result= st.button("To search with the latest data, click here!")
 st.write(result)
 
 df=pd.read_csv("Unicorn.csv")
