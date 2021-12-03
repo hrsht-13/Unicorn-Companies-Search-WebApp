@@ -90,7 +90,6 @@ else:
 
 df=pd.read_csv("Unicorn.csv")
 df["Date Joined"]=pd.DatetimeIndex(df["Date Joined"])
-st.balloons()
 #globe
 st.header("Countries with Unicorn Companies")
 dfx=df[['latitude', 'longitude']]
