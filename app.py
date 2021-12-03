@@ -39,36 +39,7 @@ def findGeocode(city):
         return findGeocode(city) 
       
       
-def location():
-  x=0
-  y=0
-  progress=st.sidebar.progress(0)
-  #for cities
-  lon = {}
-  lat = {}
-  
-  for i in (df["City"].unique()):
-    time.sleep(0.1)
-    progress.progress(x+1)
-      
-    if findGeocode(i) != None:
-           
-        loc = findGeocode(i)
-          
-        # coordinates returned from 
-        # function is stored into
-        # two separate list
-        lat[i]=loc.latitude
-        lon[i]=loc.longitude
-       
-    # if coordinate for a city not
-    # found, insert "NaN" indicating 
-    # missing value 
-    else:
-        lat[i]=np.nan
-        lon[i]=np.nan
-    x=x+1
-    
+def location():  
     
   #for countries
   longitude = {}
@@ -96,6 +67,30 @@ def location():
         longitude[i]=np.nan
         
     y=y+1
+    
+      y=0
+  #for cities
+  lon = {}
+  lat = {}
+  
+  for i in (df["City"].unique()):
+      
+    if findGeocode(i) != None:
+           
+        loc = findGeocode(i)
+          
+        # coordinates returned from 
+        # function is stored into
+        # two separate list
+        lat[i]=loc.latitude
+        lon[i]=loc.longitude
+       
+    # if coordinate for a city not
+    # found, insert "NaN" indicating 
+    # missing value 
+    else:
+        lat[i]=np.nan
+        lon[i]=np.nan
   
   st.balloons()
   return longitude, latitude , lat, lon
