@@ -59,7 +59,7 @@ def location():
     lat[i]=loc.latitude
     lon[i]=loc.longitude
 
-  
+  st.balloons()
   return longitude, latitude , lat, lon
 
 st.set_page_config(layout="wide")
