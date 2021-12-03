@@ -106,8 +106,8 @@ if(From_Date=='31'):
 else:
   pass
 
-with st.button("click hear"):
-  st.write("HELLO")
+result= st.button("To search with the latest data, click here!"):
+st.write(result)
 
 df=pd.read_csv("Unicorn.csv")
 df["Date Joined"]=pd.DatetimeIndex(df["Date Joined"])
