@@ -93,7 +93,7 @@ st.warning("A unicorn company, or unicorn startup, is a private company with a v
 #Dataset
 Today = datetime.now()-timedelta(hours=12, minutes =30)
 From_Date = (Today.strftime("%d"))
-if(From_Date=='03'):
+if(From_Date=='31'):
   st.write("getting data")
   df=get_data()
   # df=pd.read_csv("700_unicorn.csv")
