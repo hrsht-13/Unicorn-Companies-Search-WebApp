@@ -58,7 +58,8 @@ def location():
     loc = findGeocode(i)
     lat[i]=loc.latitude
     lon[i]=loc.longitude
-
+    
+  st.warning("New data has been extracted..")
   st.balloons()
   return longitude, latitude , lat, lon
 
@@ -70,7 +71,7 @@ st.success("A unicorn company, or unicorn startup, is a private company with a v
 #sidebar
 result= st.sidebar.button("To search with the latest data, click here!")
 if result:
-  st.sidebar.warning("Please wait,data is been extracted..")
+  st.warning("Please wait, till the data is extracted..")
   
 #Dataset
 Today = datetime.now()-timedelta(hours=12, minutes =30)
