@@ -68,7 +68,7 @@ def location():
         
     y=y+1
     
-      y=0
+  y=0
   #for cities
   lon = {}
   lat = {}
