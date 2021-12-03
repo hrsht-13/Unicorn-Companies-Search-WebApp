@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
-from additonal.py import *
+from additonal import *
 
 import warnings
 warnings.filterwarnings("ignore")
