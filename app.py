@@ -18,7 +18,7 @@ def get_data():
   df["Valuation ($B)"] = df["Valuation ($B)"].apply(lambda x : x.replace("$","")) 
   df["Valuation ($B)"] = df["Valuation ($B)"].astype("float")
   df.rename(columns = {'Company':'Company name', 'Valuation ($B)':'Valuation (in $B)', 'Country':'Country of origin','Select Investors':'Investors'}, inplace = True)
-  df.to_csv("unicorn.csv")
+  return df
   
 def findGeocode(city):
        
@@ -93,9 +93,8 @@ st.warning("A unicorn company, or unicorn startup, is a private company with a v
 #Dataset
 Today = datetime.now()-timedelta(hours=12, minutes =30)
 From_Date = (Today.strftime("%d"))
-if(From_Date=='31'):
-  get_data()
-  df=pd.read_csv("unicorn.csv")
+if(From_Date=='03'):
+  df=get_data()
   # df=pd.read_csv("700_unicorn.csv")
   df["Date Joined"]=pd.DatetimeIndex(df["Date Joined"])
   longitude,latitude,lat,lon=location()
@@ -103,10 +102,12 @@ if(From_Date=='31'):
   df["latitude"]=df["Country of origin"].map(latitude)
   df["lat"]=df["City"].map(lat)
   df["lon"]=df["City"].map(lon)
+  df.to_csv("Unicorn.csv)
 else:
-  df=pd.read_csv("unicorn.csv")
+  pass
 
 
+df=pd.read_csv("Unicorn.csv")
 #globe
 st.header("Countries with Unicorn Companies")
 dfx=df[['latitude', 'longitude']]
