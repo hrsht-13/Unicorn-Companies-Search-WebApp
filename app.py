@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
-from scrape_unicorn import *
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -12,9 +11,6 @@ st.set_page_config(layout="wide")
 
 st.title("Unicorn Companies across the Globe.")
 st.warning("A unicorn company, or unicorn startup, is a private company with a valuation over $1 billion. As of June 2021, there are more than 700 unicorns around the world. Popular former unicorns include Airbnb, Facebook and Google. Variants include a decacorn, valued at over $10 billion, and a hectocorn, valued at over $100 billion.")
-
-#data scrapper
-scrape()
 
 #Dataset
 df=pd.read_csv("700_unicorn.csv")
