@@ -93,10 +93,10 @@ df=pd.read_csv("unicorn.csv")
 # df=pd.read_csv("700_unicorn.csv")
 df["Date Joined"]=pd.DatetimeIndex(df["Date Joined"])
 longitude,latitude,lat,lon=location()
-df["longitude"]=longitude
-df["latitude"]=latitude
-df["lat"]=lat
-df["lon"]=lon
+df["longitude"]=df["Country of origin"].map(longitude)
+df["latitude"]=df["Country of origin"].map(latitude)
+df["lat"]=df["City"].map(lat)
+df["lon"]=df["City"].map(lon)
 
 
 #globe
