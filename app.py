@@ -88,12 +88,12 @@ def location():
 st.set_page_config(layout="wide")
 
 st.title("Unicorn Companies across the Globe.")
-st.success("A unicorn company, or unicorn startup, is a private company with a valuation over $1 billion. As of June 2021, there are more than 700 unicorns around the world. Popular former unicorns include Airbnb, Facebook and Google. Variants include a decacorn, valued at over $10 billion, and a hectocorn, valued at over $100 billion.")
+st.success("A unicorn company, or unicorn startup, is a private company with a valuation over $1 billion. As of December 2021, there are more than 900 unicorns around the world. Popular former unicorns include Airbnb, Facebook and Google. Variants include a decacorn, valued at over $10 billion, and a hectocorn, valued at over $100 billion.")
 
 #Dataset
 Today = datetime.now()-timedelta(hours=12, minutes =30)
 From_Date = (Today.strftime("%d"))
-if(From_Date=='31'):
+if(From_Date=='31' or result):
   df=get_data()
   # df=pd.read_csv("700_unicorn.csv")
   df["Date Joined"]=pd.DatetimeIndex(df["Date Joined"])
@@ -159,8 +159,10 @@ st.sidebar.subheader("Select Time-Period")
 start=pd.to_datetime(st.sidebar.date_input("From",value=pd.to_datetime("2007-07-20")))
 end=pd.to_datetime(st.sidebar.date_input("To",value=pd.to_datetime(df["Date Joined"]).max()))
 st.sidebar.write('**NOTE**: Date refers when the company became a Unicorn.')
-st.sidebar.warning("The data updates after every month.")
+st.sidebar.error("The data updates after every month.")
 result= st.sidebar.button("To search with the latest data, click here!")
+if result:
+  st.sidebar.warning("Please wait, new data is been extracted!")
 
 #country map
 st.header("Country Map")
