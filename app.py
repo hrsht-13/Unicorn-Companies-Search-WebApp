@@ -21,7 +21,7 @@ df["Valuation ($B)"] = df["Valuation ($B)"].apply(lambda x : x.replace("$",""))
 df["Valuation ($B)"] = df["Valuation ($B)"].astype("float")
 df.to_csv("file1.csv")
 t=pd.read_csv("file1.csv")
-st.write(df.shape)
+st.write(t.shape[0])
 df=pd.read_csv("700_unicorn.csv")
 df["Date Joined"]=pd.DatetimeIndex(df["Date Joined"])
 
