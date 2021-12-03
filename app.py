@@ -5,6 +5,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from geopy.exc import GeocoderTimedOut
 from geopy.geocoders import Nominatim
+from tqdm import tqdm
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -39,7 +40,7 @@ def location():
   #for cities
   lon = {}
   lat = {}
-  for i in (df["City"].unique()):
+  for i in tqdm(df["City"].unique()):
       
     if findGeocode(i) != None:
            
@@ -61,7 +62,7 @@ def location():
   #for countries
   longitude = {}
   latitude = {}
-  for i in (df["Country of origin"].unique()):
+  for i in tqdm(df["Country of origin"].unique()):
       
     if findGeocode(i) != None:
            
