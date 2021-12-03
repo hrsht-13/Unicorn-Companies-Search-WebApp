@@ -19,10 +19,11 @@ df["Date Joined"]=pd.to_datetime(df["Date Joined"],infer_datetime_format=True)
 df["Date Joined"]=df["Date Joined"].dt.strftime("%d-%m-%Y")
 df["Valuation ($B)"] = df["Valuation ($B)"].apply(lambda x : x.replace("$","")) 
 df["Valuation ($B)"] = df["Valuation ($B)"].astype("float")
+st.write(df.shape)
 df.to_csv("file1.csv")
 df=pd.read_csv("700_unicorn.csv")
 df["Date Joined"]=pd.DatetimeIndex(df["Date Joined"])
-st.write(df.shape)
+
 
 #globe
 st.header("Countries with Unicorn Companies")
