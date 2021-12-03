@@ -93,7 +93,7 @@ st.success("A unicorn company, or unicorn startup, is a private company with a v
 #sidebar
 result= st.sidebar.button("To search with the latest data, click here!")
 if result:
-  st.sidebar.warning("Please wait, new data is been extracted!")
+  st.sidebar.warning("Please wait, new data is been extracted...")
   
 #Dataset
 Today = datetime.now()-timedelta(hours=12, minutes =30)
