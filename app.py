@@ -19,6 +19,7 @@ def get_data():
   df["Valuation ($B)"] = df["Valuation ($B)"].apply(lambda x : x.replace("$","")) 
   df["Valuation ($B)"] = df["Valuation ($B)"].astype("float")
   df.rename(columns = {'Company':'Company name', 'Valuation ($B)':'Valuation (in $B)', 'Country':'Country of origin','Select Investors':'Investors'}, inplace = True)
+  df.dropna(inplace=True)
   return df
   
 def findGeocode(city):
@@ -86,7 +87,6 @@ def location():
         lat[i]=np.nan
         lon[i]=np.nan
   
-  st.balloons()
   return longitude, latitude , lat, lon
 
 st.set_page_config(layout="wide")
