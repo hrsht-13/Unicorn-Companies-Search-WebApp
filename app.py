@@ -104,7 +104,7 @@ if(From_Date=='31'):
   df["lat"]=df["City"].map(lat)
   df["lon"]=df["City"].map(lon)
 else:
-  pass
+  df=pd.read_csv("unicorn.csv")
 
 
 #globe
