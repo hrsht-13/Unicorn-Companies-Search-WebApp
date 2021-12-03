@@ -7,3 +7,4 @@ warn==0.1.0
 datetime
 lxml==4.6.4
 geopy
+tqdm
