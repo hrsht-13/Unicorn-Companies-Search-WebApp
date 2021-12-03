@@ -40,15 +40,12 @@ def findGeocode(city):
       
       
 def location():  
-  y=0  
   #for countries
   longitude = {}
   latitude = {}
-  progress=st.sidebar.progress(0)
   
   for i in tqdm(df["Country of origin"].unique()):
-    time.sleep(0.1)
-    progress.progress(y+1)
+    
     if findGeocode(i) != None:
            
         loc = findGeocode(i)
@@ -66,8 +63,6 @@ def location():
         latitude[i]=np.nan
         longitude[i]=np.nan
         
-    y=y+1
-  
   #for cities
   lon = {}
   lat = {}
