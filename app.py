@@ -50,10 +50,6 @@ def location():
     latitude[i]=loc.latitude
     longitude[i]=loc.longitude
         
-  else:
-    latitude[i]=np.nan
-    longitude[i]=np.nan
-        
   #for cities
   lon = {}
   lat = {}
@@ -62,10 +58,7 @@ def location():
     loc = findGeocode(i)
     lat[i]=loc.latitude
     lon[i]=loc.longitude
-       
-   else:
-    lat[i]=np.nan
-    lon[i]=np.nan
+
   
   return longitude, latitude , lat, lon
 
