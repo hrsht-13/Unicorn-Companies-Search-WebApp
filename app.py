@@ -15,7 +15,7 @@ def get_data():
   df["Date Joined"]=df["Date Joined"].dt.strftime("%d-%m-%Y")
   df["Valuation ($B)"] = df["Valuation ($B)"].apply(lambda x : x.replace("$","")) 
   df["Valuation ($B)"] = df["Valuation ($B)"].astype("float")
-  df.to_csv("unicorn.csv")
+  df.to_csv("unicornvvvv.csv")
 
 st.set_page_config(layout="wide")
 
@@ -24,7 +24,7 @@ st.warning("A unicorn company, or unicorn startup, is a private company with a v
 
 #Dataset
 get_data()
-t=pd.read_csv("unicorn.csv")
+t=pd.read_csv("unicornvvvv.csv")
 st.write(t.shape[0])
 df=pd.read_csv("700_unicorn.csv")
 df["Date Joined"]=pd.DatetimeIndex(df["Date Joined"])
