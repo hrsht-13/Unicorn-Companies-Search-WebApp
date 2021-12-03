@@ -6,7 +6,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from geopy.exc import GeocoderTimedOut
 from geopy.geocoders import Nominatim
-from tqdm import tqdm
+from stqdm import stqdm
 from datetime import date, datetime, timedelta
 import warnings
 warnings.filterwarnings("ignore")
@@ -45,7 +45,7 @@ def location():
   longitude = {}
   latitude = {}
   
-  for i in tqdm(df["Country of origin"].unique()): 
+  for i in stqdm(df["Country of origin"].unique()): 
     loc = findGeocode(i)
     latitude[i]=loc.latitude
     longitude[i]=loc.longitude
@@ -54,7 +54,7 @@ def location():
   lon = {}
   lat = {}
   
-  for i in tqdm(df["City"].unique()):
+  for i in stqdm(df["City"].unique()):
     loc = findGeocode(i)
     lat[i]=loc.latitude
     lon[i]=loc.longitude
