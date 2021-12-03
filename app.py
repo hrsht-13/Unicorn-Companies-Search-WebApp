@@ -40,11 +40,11 @@ st.bar_chart(df.groupby(['Country of origin'])['Valuation (in $B)'].sum())
 #top valuation per year
 st.header("Top Unicorn Companies with Valuation % ")
 st.write("See the top unicorn companies and their percentage valuation per year, when they joined.")
-l,r=st.beta_columns(2)
+l,r=st.columns(2)
 dropdown=l.multiselect("Select Year(s)",df.sort_values("Date Joined")["Date Joined"].dt.year.unique())
 num=r.slider("Top N",min_value=1, max_value=100, value=10, step=1)
 if len(dropdown)>0:
-  col=st.beta_columns(len(dropdown))
+  col=st.columns(len(dropdown))
   for i in range(len(dropdown)):
     dc=df[df["Date Joined"].dt.year==dropdown[i]].sort_values("Valuation (in $B)")[-num:][["Company name","Valuation (in $B)"]]
     # dc.set_index("Company name",inplace=True)
@@ -75,7 +75,7 @@ df_date=df[(df["Date Joined"]<end) & (df["Date Joined"]>start)].sort_values("Dat
 df_city=df_date[df_date["Country of origin"]==country]
 dfx=df_city[['lat', 'lon']]
 st.map(dfx,zoom=4,use_container_width=False)
-with st.beta_expander("See Cities"):
+with st.expander("See Cities"):
   st.write(
   (df_city["City"].unique())
       )
@@ -84,7 +84,7 @@ with st.beta_expander("See Cities"):
 st.header("Unicorn Companies in "+country)
 dtc=df[df["Country of origin"]==country][["Company name", "Valuation (in $B)"]].sort_values("Valuation (in $B)")
 dtc.reset_index(drop=True,inplace=True)
-with st.beta_expander("List of all Unicorn Companies till date."):
+with st.expander("List of all Unicorn Companies till date."):
   st.table(dtc)
 
       
@@ -103,7 +103,7 @@ st.header("Valuation of Unicorn Companies ")
 st.write("Valuation of Unicorn Companies in the listed city in the selected time period. ( Mouseover the points to see the company name.)")
 city=df_city["City"].unique()
 # if(len(city)>0):
-#   col=st.beta_columns(len(city))
+#   col=st.columns(len(city))
 #   for i in range(len(city)):
 #     dc=df_city[df_city["City"]==city[i]][["Company name","Valuation (in $B)"]]
 #     dc.set_index("Company name",inplace=True)
