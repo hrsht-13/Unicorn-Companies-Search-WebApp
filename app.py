@@ -3,10 +3,19 @@ import pandas as pd
 import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
-from additonal import *
-
+from geopy.exc import GeocoderTimedOut
+from geopy.geocoders import Nominatim
 import warnings
 warnings.filterwarnings("ignore")
+
+def get_data():
+  url="https://www.cbinsights.com/research-unicorn-companies"
+  df=pd.read_html(url)[0]
+  df["Date Joined"]=pd.to_datetime(df["Date Joined"],infer_datetime_format=True)
+  df["Date Joined"]=df["Date Joined"].dt.strftime("%d-%m-%Y")
+  df["Valuation ($B)"] = df["Valuation ($B)"].apply(lambda x : x.replace("$","")) 
+  df["Valuation ($B)"] = df["Valuation ($B)"].astype("float")
+  df.to_csv("unicorn.csv")
 
 st.set_page_config(layout="wide")
 
