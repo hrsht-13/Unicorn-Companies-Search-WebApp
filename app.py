@@ -97,10 +97,10 @@ if(result):
   df=get_data()
   # df=pd.read_csv("700_unicorn.csv")
   df["Date Joined"]=pd.DatetimeIndex(df["Date Joined"])
-  longitude=pd.read_csv("country_lon.csv").set_index(0).T.to_dict("records")[0]
-  latitude=pd.read_csv("country_lat.csv").set_index(0).T.to_dict("records")[0]
-  lon=pd.read_csv("city_lon.csv").set_index(0).T.to_dict("records")[0]
-  lat=pd.read_csv("city_lat").set_index(0).T.to_dict("records")[0]
+  longitude=pd.read_csv("country_lon.csv").set_index('0').T.to_dict("records")[0]
+  latitude=pd.read_csv("country_lat.csv").set_index('0').T.to_dict("records")[0]
+  lon=pd.read_csv("city_lon.csv").set_index('0').T.to_dict("records")[0]
+  lat=pd.read_csv("city_lat").set_index('0').T.to_dict("records")[0]
   
   df["longitude"]=df["Country of origin"].map(longitude)
   df["latitude"]=df["Country of origin"].map(latitude)
