@@ -23,7 +23,7 @@ def get_data():
   
   city=pd.read_csv("worldcities_lat_lon.csv")
   country=pd.read_csv("countries_lat_lon.csv")
-  st.write(city)
+  st.write(country)
   df=pd.merge(df,country,on="Country of origin",how="left")
   df=pd.merge(df,city,on="City",how="left")
   df["latitude"]=df["latitude"].astype(float)
