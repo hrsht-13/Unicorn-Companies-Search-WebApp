@@ -45,8 +45,8 @@ st.write(type(df["latitude"][0]))
 df["Date Joined"]=pd.DatetimeIndex(df["Date Joined"])
 #globe
 st.header("Countries with Unicorn Companies")
-dfx=df[['latitude', 'longitude']]
-st.map(dfx,zoom=1.2,use_container_width=False)
+# dfx=df[['latitude', 'longitude']]
+# st.map(dfx,zoom=1.2,use_container_width=False)
 
 #country-valuation
 st.header("Total Valuation per Country")
