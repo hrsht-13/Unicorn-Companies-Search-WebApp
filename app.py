@@ -21,47 +21,6 @@ def get_data():
   df.rename(columns = {'Company':'Company name', 'Valuation ($B)':'Valuation (in $B)', 'Country':'Country of origin','Select Investors':'Investors'}, inplace = True)
   df.dropna(inplace=True)
   return df
-  
-def findGeocode(city):
-       
-    # try and catch is used to overcome
-    # the exception thrown by geolocator
-    # using geocodertimedout  
-    try:
-          
-        # Specify the user_agent as your
-        # app name it should not be none
-        geolocator = Nominatim(user_agent="your_app_name")
-          
-        return geolocator.geocode(city)
-      
-    except GeocoderTimedOut:
-          
-        return findGeocode(city) 
-      
-      
-def location():  
-  #for countries
-  longitude = {}
-  latitude = {}
-  
-  for i in stqdm(df["Country of origin"].unique()): 
-    loc = findGeocode(i)
-    latitude[i]=loc.latitude
-    longitude[i]=loc.longitude
-        
-  #for cities
-  lon = {}
-  lat = {}
-  
-  for i in stqdm(df["City"].unique()):
-    loc = findGeocode(i)
-    lat[i]=loc.latitude
-    lon[i]=loc.longitude
-    
-  st.warning("New data has been extracted..")
-  st.balloons()
-  return longitude, latitude , lat, lon
 
 st.set_page_config(layout="wide")
 
@@ -71,45 +30,9 @@ st.success("A unicorn company, or unicorn startup, is a private company with a v
 #sidebar
 result= st.sidebar.button("To search with the latest data, click here!")
   
-#Dataset
-Today = datetime.now()-timedelta(hours=12, minutes =30)
-From_Date = (Today.strftime("%d"))
-if(From_Date=='31' ):
-  df=get_data()
-  # df=pd.read_csv("700_unicorn.csv")
-  df["Date Joined"]=pd.DatetimeIndex(df["Date Joined"])
-  longitude,latitude,lat,lon=location()
-  pd.DataFrame(longitude.items()).to_csv("country_lon.csv",index=False)
-  pd.DataFrame(latitude.items()).to_csv("country_lat.csv",index=False)
-  pd.DataFrame(lon.items()).to_csv("city_lon.csv",index=False)
-  pd.DataFrame(lat.items()).to_csv("city_lat.csv",index=False)
-  df["longitude"]=df["Country of origin"].map(longitude)
-  df["latitude"]=df["Country of origin"].map(latitude)
-  df["lat"]=df["City"].map(lat)
-  df["lon"]=df["City"].map(lon)
-  df.to_csv("Unicorn.csv",index=False)
-else:
-  pass
 
-if(result):
-  df=get_data()
-  # df=pd.read_csv("700_unicorn.csv")
-  df["Date Joined"]=pd.DatetimeIndex(df["Date Joined"])
-  longitude=pd.read_csv("country_lon.csv").set_index('0').T.to_dict("records")[0]
-  latitude=pd.read_csv("country_lat.csv").set_index('0').T.to_dict("records")[0]
-  lon=pd.read_csv("city_lon.csv").set_index('0').T.to_dict("records")[0]
-  lat=pd.read_csv("city_lat.csv").set_index('0').T.to_dict("records")[0]
-  
-  df["longitude"]=df["Country of origin"].map(longitude)
-  df["latitude"]=df["Country of origin"].map(latitude)
-  df["lat"]=df["City"].map(lat)
-  df["lon"]=df["City"].map(lon)
-  df.to_csv("Unicorn.csv")
-  st.balloons()
-else:
-  pass
-
-df=pd.read_csv("Unicorn.csv")
+df=get_data()
+st.write(df.columns)
 df["Date Joined"]=pd.DatetimeIndex(df["Date Joined"])
 #globe
 st.header("Countries with Unicorn Companies")
