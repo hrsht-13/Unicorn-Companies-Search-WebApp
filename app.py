@@ -21,7 +21,7 @@ def get_data():
   df.rename(columns = {'Company':'Company name', 'Valuation ($B)':'Valuation (in $B)', 'Country':'Country of origin','Select Investors':'Investors'}, inplace = True)
   df.dropna(inplace=True)
   
-  city=pd.read("worldcities_lat_lon.csv")
+  city=pd.read_csv("worldcities_lat_lon.csv")
   country=pd.read_csv("countries_lat_lon.csv")
   
   df=pd.merge(df,country,on="Country of origin",how="left")
