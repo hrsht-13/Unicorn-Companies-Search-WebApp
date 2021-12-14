@@ -26,6 +26,7 @@ def get_data():
   
   df=pd.merge(df,country,on="Country of origin",how="left")
   df=pd.merge(df,city,on="City",how="left")
+  df["latitude"]=df["latitude"].astype(float)
   return df
 
 st.set_page_config(layout="wide")
