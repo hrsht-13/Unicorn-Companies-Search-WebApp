@@ -39,7 +39,7 @@ result= st.sidebar.button("To search with the latest data, click here!")
 
 df=get_data()
 st.write(df.columns)
-st.write(df.dtypes)
+st.table(df.dtypes)
 df["Date Joined"]=pd.DatetimeIndex(df["Date Joined"])
 #globe
 st.header("Countries with Unicorn Companies")
