@@ -20,6 +20,12 @@ def get_data():
   df["Valuation ($B)"] = df["Valuation ($B)"].astype("float")
   df.rename(columns = {'Company':'Company name', 'Valuation ($B)':'Valuation (in $B)', 'Country':'Country of origin','Select Investors':'Investors'}, inplace = True)
   df.dropna(inplace=True)
+  
+  city=pd.read("worldcities_lat_lon.csv")
+  country=pd.read_csv("countries_lat_lon.csv")
+  
+  df=pd.merge(df,country,on="Country of origin",how="left)
+  df=pd.merge(df,city,on="City",how="left)
   return df
 
 st.set_page_config(layout="wide")
